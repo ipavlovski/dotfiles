@@ -1,16 +1,15 @@
 {
-	"font_face": "Source Code Pro",
-	"font_size": 13,
-
+	// theme stuff
+	"theme": "Spacegray.sublime-theme",
+	"color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
+	"font_face": "Cartograph CF",
+	"font_size": 12,
 	"caret_style": "phase",
-	"hot_exit": false,
-	"ignored_packages":
-	[
-		"Vintage",
-	],
-	"gtk_client_side_window_decorations": false,
-	"color_scheme": "Nord.sublime-color-scheme",
 
+	// general settings
+	"hot_exit": false,
+	"ignored_packages": ["Vintage" ],
+	"gtk_client_side_window_decorations": false,
     "auto_complete": false,
     "auto_complete_commit_on_tab": false,
     "auto_close_tags":false,
