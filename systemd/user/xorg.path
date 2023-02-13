@@ -1,0 +1,9 @@
+[Unit]
+Description=Wait for x11 to bootup using the x11 socket
+
+[Path]
+PathExists=/tmp/.X11-unix/X0
+Unit=wm.target
+
+[Install]
+WantedBy=default.target

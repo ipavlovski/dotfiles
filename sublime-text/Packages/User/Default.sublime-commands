@@ -1,0 +1,9 @@
+[
+	{"caption": "jsrepl: Clear JS repl", "command": "js_repl_send"},
+	{"caption": "jsrepl: Send to JS repl", "command": "js_repl_clear"},
+	{"caption": "jsrepl: Change between tmux and chrome", "command": "js_repl_set_env"},
+	{"caption": "jsrepl: Open chrome with debugger", "command": "js_repl_open_chrome"},
+
+	{ "caption": "Open file by path...", "command": "open_file_by_path" }
+ 
+]

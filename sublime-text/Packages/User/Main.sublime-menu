@@ -1,0 +1,14 @@
+[
+  {
+    "id": "file",
+    "children":
+    [
+      {
+        "id": "open_file_by_path",
+        "command": "open_file_by_path",
+        "caption": "Open File by Path...",
+        "mnemonic": "F"
+      }
+    ]
+  }
+]

@@ -1,0 +1,209 @@
+#                 __    __       __
+#      ______  __/ /_  / /______/ /_________
+#     / ___/ |/_/ __ \/ //_/ __  / ___/ ___/
+#  _ (__  )>  </ / / / ,< / /_/ / /  / /__
+# (_)____/_/|_/_/ /_/_/|_|\__,_/_/   \___/
+
+
+#  =================================
+#              CORE KEYS            
+#  =================================
+
+# program launcher
+super + a
+  ~/.local/scripts/rofi-tiled
+  
+super + shift + a
+  rofi -show drun
+
+
+# make sxhkd reload its configuration files:
+super + Escape
+  pkill -USR1 -x sxhkd
+
+# rotate the windows around
+super + r
+  bspc node @/ -R 90
+
+# close and kill
+super + w
+  bspc node -c
+
+super + shift + q
+  bspc node -k
+
+# focus the last node/desktop
+super + {grave,Tab}
+  bspc {desktop,node} -f last
+
+# alternate between the tiled and monocle layout
+super + m
+  bspc desktop -l next
+
+
+super + {_,shift + }{Left,Right}
+  bspc {desktop -f,node -d} {prev,next}.local --follow
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+  bspc {desktop -f,node -d} '^{1-9,10}'
+
+
+# swap the current node and the biggest window
+super + g
+  bspc node -s biggest.window
+
+# focus the node for the given path jump
+super + {p,b,comma,period}
+  bspc node -f @{parent,brother,first,second}
+
+# focus the older or newer node in the focus history
+super + {o,i}
+  bspc wm -h off; \
+  bspc node {older,newer} -f; \
+  bspc wm -h on
+
+super + {_,shift +} + e
+  bspc node {@/,@parent} {--equalize,--balance}
+
+
+
+
+#  ======================================
+#              FLOATING UTILS            
+#  ======================================
+
+
+
+super + z
+  /home/ip/.local/scripts/wm-resize
+
+#  if wmctrl -xl | grep -q 'matplotlib.matplotlib'; then \
+#    id=$(wmctrl -xl | grep -P "^.*?\Kmatplotlib.matplotlib" | cut -c 1-10); \
+#    wmctrl -ir "$id" -e 0,2404,1335,1379,767; \
+#  fi
+
+## ranger (f = files)
+super + f
+  if wmctrl -xl | grep -q 'ip-ranger'; then \
+    id=$(wmctrl -xl | grep -P "^.*?\Kip-ranger" | cut -c 1-10);\
+    bspc node "$id" -g hidden=off --to-desktop focused --focus ; \
+  else \
+     bspc rule -a '*' -o marked=on; \
+     alacritty -t 'ip-ranger' -e ranger; \
+  fi
+
+## terminal
+super + x
+  if wmctrl -xl | grep -q 'ip-bash'; then \
+    id=$(wmctrl -xl | grep -P "^.*?\Kip-bash" | cut -c 1-10);\
+    bspc node "$id" -g hidden=off --to-desktop focused --focus ; \
+  else \
+     bspc rule -a '*' -o marked=on; \
+     ALACRITTY='a' alacritty -t 'ip-bash'; \
+  fi
+
+## taskwarrior (t=tasks)
+super + t
+  if wmctrl -xl | grep -q 'ip-taskwarrior'; then \
+    id=$(wmctrl -xl | grep -P "^.*?\Kip-taskwarrior" | cut -c 1-10);\
+    bspc node "$id" -g hidden=off --to-desktop focused --focus ; \
+  else \
+     bspc rule -a '*' -o marked=on; \
+     alacritty -t 'ip-taskwarrior' -e taskwarrior-tui; \
+  fi
+
+## sublime
+super + c
+  if wmctrl -xl | grep -q 'ip-sublime'; then \
+    id=$(wmctrl -xl | grep -P "^.*?\Kip-sublime" | cut -c 1-10);\
+    bspc node "$id" -g hidden=off --to-desktop focused --focus ; \
+  else \
+     bspc rule -a '*' -o marked=on; \
+     journal=~/docs/notes/journals/journal.md ;\
+     subl -n $journal:9999; \
+  fi
+
+## hide
+super + shift + {z,f,x,t,c}
+  id=$(wmctrl -xl | grep -P '{ip-chrome,ip-ranger,ip-bash,ip-taskwarrior,ip-sublime}'| cut -c 1-10); if xprop -id $id; then bspc node $id --flag hidden=on; fi
+
+super + shift + h
+  bspc node $(bspc query -N -n .hidden | tail -n1) -g hidden=off
+
+
+#  ====================================
+#              PRESELECTION            
+#  ====================================
+
+# send the node to preselected
+super + y
+  bspc node -n 'last.!automatic.local'
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+  bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+  bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+  bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+  bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+
+#  ===================================
+#              MOVE/RESIZE            
+#  ===================================
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+  bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+  bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+
+#  ============================
+#              MISC            
+#  ============================
+
+super + {s,shift + s,ctrl+s}
+  /home/ip/.local/scripts/screenshot {clipboard,feh,save}
+
+super + shift + {t,u,j,m}
+ bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+super + shift + v
+    bspc node focused -t \~tiled
+
+super + shift + p
+    /usr/bin/rofi-pass
+
+super + shift + i
+    ~/.local/share/logger/scripts/quicknotedb-logger
+
+#  =============================
+#              MEDIA            
+#  =============================
+
+XF86AudioPlay
+  playerctl -p spotify play-pause
+
+{XF86AudioLowerVolume,Insert,XF86AudioRaiseVolume}
+  pactl set-sink-volume @DEFAULT_SINK@ {-5%,+5%,+5%}
+
+XF86AudioMute
+  pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+shift + {XF86AudioLowerVolume,Insert,XF86AudioRaiseVolume}
+  playerctl -p spotify {previous,next,next}
+
+shift + XF86AudioMute
+  playerctl -p spotify position 15+

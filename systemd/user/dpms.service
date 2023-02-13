@@ -1,0 +1,10 @@
+[Unit]
+Description=DPMS xset off
+Documentation=man:xset(1)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/xset s off -dpms
+
+[Install]
+WantedBy=wm.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Scratch Folder
+
+[Service]
+Type=oneshot
+ExecStart=-/usr/bin/mkdir /tmp/scratch
+
+[Install]
+WantedBy=wm.target

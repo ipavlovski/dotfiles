@@ -1,0 +1,86 @@
+# [Created by task 2.5.1 6/3/2020 01:03:05]
+# Taskwarrior program configuration file.
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Color theme (uncomment one to use)
+#include /usr/share/doc/task/rc/light-16.theme
+#include /usr/share/doc/task/rc/light-256.theme
+#include /usr/share/doc/task/rc/dark-16.theme
+#include /usr/share/doc/task/rc/dark-256.theme
+#include /usr/share/doc/task/rc/dark-red-256.theme
+#include /usr/share/doc/task/rc/dark-green-256.theme
+#include /usr/share/doc/task/rc/dark-blue-256.theme
+#include /usr/share/doc/task/rc/dark-violets-256.theme
+#include /usr/share/doc/task/rc/dark-yellow-green.theme
+#include /usr/share/doc/task/rc/dark-gray-256.theme
+#include /usr/share/doc/task/rc/dark-gray-blue-256.theme
+#include /usr/share/doc/task/rc/solarized-dark-256.theme
+#include /usr/share/doc/task/rc/solarized-light-256.theme
+#include /usr/share/doc/task/rc/no-color.theme
+
+# GENERAL SETTINGS
+data.location=~/.local/share/taskwarrior
+default.command=minimal
+news.version=2.6.0
+search.case.sensitive=no
+verbose=no
+
+# Custom user-defined attribute
+uda.edited.type=date
+uda.edited.label=Edited
+# a shortcut to 'timestamp' edited
+alias.touch=modify edited:now
+
+# A report based on 'recently edited'
+report.last.description=Last 10 tasks
+report.last.columns=id,edited,project,description.desc
+report.last.labels=ID,Edited,Project,Description
+report.last.sort=edited-,entry+
+report.last.filter=edited.any: limit:10
+
+report.simple.description=Simple list of open tasks by project
+report.simple.columns=id,project,tags.list,description.count
+report.simple.labels=ID,Proj,Tag,Desc
+report.simple.sort=project+\/,entry+
+report.simple.filter=status:pending
+
+
+context.code3.read=+code
+context.code3.write=+code
+context.fabrication4.read=+fabrication
+context.fabrication4.write=+fabrication
+context.building6.read=+building
+context.building6.write=+building
+context.general7.read=+general
+context.general7.write=+general
+context.notes8.read=+notes
+context.notes8.write=+notes
+
+alias.deleted=status:deleted
+
+#report.next.filter=status:pending
+uda.taskwarrior-tui.shortcuts.1=~/.local/scripts/tasknotes-subl
+uda.taskwarrior-tui.shortcuts.2=~/.local/scripts/tasknotes-vim
+
+uda.taskwarrior-tui.shortcuts.3=task context code3
+uda.taskwarrior-tui.shortcuts.4=task context fabrication4
+uda.taskwarrior-tui.shortcuts.5=notify-send 'unmapped shortcut!'
+uda.taskwarrior-tui.shortcuts.6=task context building6
+uda.taskwarrior-tui.shortcuts.7=task context general7
+uda.taskwarrior-tui.shortcuts.8=task context notes8
+uda.taskwarrior-tui.shortcuts.9=task context none
+
+uda.taskwarrior-tui.task-report.reset-filter-on-esc=false
+uda.taskwarrior-tui.task-report.looping=false
+uda.taskwarrior-tui.task-report.next.filter=status:pending
+#uda.taskwarrior-tui.task-report.next.filter=report.simple
+report.next.sort=description+
+context=notes8

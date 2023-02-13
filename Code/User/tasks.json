@@ -1,0 +1,125 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    // DEBUG
+    {
+      "label": "echo",
+      "type": "shell",
+      "command": "echo ${workspaceFolder}"
+    },
+    {
+      "label": "notify-send",
+      "type": "shell",
+      "command": "notify-send ${workspaceFolder}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      }
+    },
+    // TERMINAL INTERACTION
+    {
+      "label": ".load",
+      "command": "${input:cmd}",
+      "type": "shell",
+      "problemMatcher": []
+    },
+    {
+      "label": ".exit",
+      "type": "shell",
+      "command": "pkill",
+      "args": [
+        "-f",
+        "'node /usr/bin/ts-node -e'"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      }
+    },
+    {
+      "label": "grep-imports",
+      "type": "shell",
+      "command": "sed",
+      "args": [
+        "'/^import/!d;w /tmp/npm-repl-imports.ts'",
+        "${workspaceFolder}/scratch.ts"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      }
+    },
+    {
+      "label": "tmux-switch",
+      "type": "shell",
+      "command": "tmux",
+      "args": [
+        "selectw",
+        "-t",
+        "2"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      }
+    },
+    {
+      "label": "vite",
+      "type": "shell",
+      "command": "tmux",
+      "args": [
+        "send-keys",
+        "vite -c .vscode/vite.config.ts",
+        "Enter"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      }
+    },
+    {
+      "label": "chrome-debug",
+      "type": "shell",
+      "command": "google-chrome-stable",
+      "args": [
+        "--user-data-dir=/home/ip/.config/google-chrome-dev",
+        "--remote-debugging-port=9222",
+        "--enable-features=WebUIDarkMode",
+        "--force-dark-mode"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      }
+    },
+    // CHROMIUM INTERACTION
+    {
+      "label": "chromium-send",
+      "type": "shell",
+      "command": "/home/ip/.local/bin/xdotool-send-keys.sh",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      }
+    },
+    {
+      "label": "chromium-clear",
+      "type": "shell",
+      "command": "/home/ip/.local/bin/xdotool-send-keys.sh clear",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "cmd",
+      "type": "command",
+      "command": "workbench.action.terminal.sendSequence",
+      "args": {
+        "text": ".load ${workspaceFolder}/scratch.ts\n"
+      }
+    }
+  ]
+}

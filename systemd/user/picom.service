@@ -1,0 +1,13 @@
+[Unit]
+Description=Picom compositor
+Documentation=man:picom(1)
+StartLimitBurst=3
+
+[Service]
+ExecStart=/usr/bin/picom 
+ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=wm.target

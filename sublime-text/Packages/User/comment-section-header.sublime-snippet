@@ -1,0 +1,15 @@
+<!-- https://github.com/hachesilva/Comment-Snippets -->
+<!-- Type `PRV O` in omnibar, Open Resource, open *.tmPreferences -->
+<!-- Then find the TM_COMMENT_START field, and adjust it as needed -->
+
+<snippet>
+	<content><![CDATA[
+${TM_COMMENT_START} ========================${1/./=/g}
+${TM_COMMENT_START}             ${1:${SELECTION}}            
+${TM_COMMENT_START} ========================${1/./=/g}
+
+$2
+]]></content>
+	<tabTrigger>comm-section-header</tabTrigger>
+	<description>Comment - Section header comment</description>
+</snippet>

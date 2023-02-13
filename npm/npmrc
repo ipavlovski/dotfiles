@@ -1,0 +1,4 @@
+package-lock=false
+prefix=/home/ip/.local/share/npm
+cache=/home/ip/.cache/npm
+init=

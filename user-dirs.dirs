@@ -1,0 +1,14 @@
+XDG_DESKTOP_DIR="$HOME/"
+
+XDG_DOCUMENTS_DIR="$HOME/docs"
+XDG_PICTURES_DIR="$HOME/docs/pics"
+XDG_SCREENSHOTS_DIR="$HOME/docs/pics"
+XDG_NOTES_DIR="$HOME/docs/notes"
+
+XDG_DOWNLOAD_DIR="/tmp/scratch"
+XDG_TEMPLATES_DIR="/tmp/scratch"
+XDG_PUBLICSHARE_DIR="/tmp/scratch"
+XDG_MUSIC_DIR="/tmp/scratch"
+XDG_VIDEOS_DIR="/tmp/scratch"
+
+XDG_PROJECTS_DIR="$HOME/projects"

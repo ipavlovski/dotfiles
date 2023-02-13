@@ -1,0 +1,10 @@
+<snippet>
+<content><![CDATA[
+```
+$0
+```
+]]></content>
+<tabTrigger>```</tabTrigger>
+<description>markdown ``` window</description>
+<scope>text.html.markdown.gfm, meta.paragraph.markdown</scope>
+</snippet>

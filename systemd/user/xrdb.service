@@ -1,0 +1,11 @@
+[Unit]
+Description=xrdb
+Documentation=man:xrdb(1)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/xrdb -merge %h/.config/X11/Xresources
+ExecStart=/usr/bin/xsetroot -cursor_name left_ptr
+
+[Install]
+WantedBy=wm.target
