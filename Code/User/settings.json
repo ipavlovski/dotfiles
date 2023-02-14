@@ -16,11 +16,8 @@
   "workbench.list.openMode": "doubleClick",
   "workbench.editor.showTabs": true,
   "workbench.editor.closeEmptyGroups": false,
-
   "explorer.confirmDelete": false,
-
   "update.mode": "manual",
-
   "explorer.confirmDragAndDrop": false,
   "editor.quickSuggestionsDelay": 150,
   "editor.quickSuggestions": {
@@ -29,15 +26,11 @@
     "other": "off"
   },
   "editor.suggestOnTriggerCharacters": false,
-
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter-notebook",
     "*.ed": "editor.excalidraw"
   },
-
-
   "mdb.confirmRunAll": false,
-
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.minimap.scale": 1,
   "search.exclude": {
@@ -46,11 +39,6 @@
   "editor.suggest.localityBonus": true,
   "editor.renderWhitespace": "none",
   "diffEditor.ignoreTrimWhitespace": false,
-
-  "prettier.semi": false,
-  "prettier.singleQuote": true,
-  "prettier.printWidth": 100,
-  
   "editor.rulers": [ 100 ], // "editor.rulers": [80, 100],
 
   "window.customMenuBarAltFocus": false,
@@ -193,9 +181,6 @@
   ],
 
 
-  // "prettier.requireConfig": true,
-
-
   /**
   * THEME
   */
@@ -214,6 +199,7 @@
 
   "workbench.colorCustomizations": {
     "editorRuler.foreground": "#81344e",
+    "statusBar.foreground": "#ffefef"
     // "tab.activeBackground": "#2e3440",
     // "tab.activeForeground": "#d8dee966",
     // "tab.inactiveBackground": "#3b4252",
@@ -224,6 +210,7 @@
     // "sideBar.foreground": "#000000",
     // "editor.background": "#FFFFFF",
     // "editor.foreground": "#000000"
+
   },
   "workbench.iconTheme": "material-icon-theme",
   "vsicons.dontShowNewVersionMessage": true,
@@ -234,7 +221,14 @@
   /**
   * EXTENSIONS
   */
-  
+
+  // prettier
+  "prettier.requireConfig": true,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.printWidth": 100,
+
+
   // docker
   "docker.images.groupBy": "Registry",
   "docker.images.sortBy": "Label",
@@ -326,5 +320,6 @@
     }
   ],
   "workbench.colorTheme": "One Dark Pro",
-  "window.menuBarVisibility": "hidden"
+  "window.menuBarVisibility": "hidden",
+
 }

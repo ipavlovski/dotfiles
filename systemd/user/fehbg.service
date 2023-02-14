@@ -3,7 +3,7 @@ Description=Feh Background Setter
 Documentation=man:feh(1)
 
 [Service]
-ExecStart=/usr/bin/feh --bg-center --no-fehbg /home/ip/.config/wallpapers/poly.jpg 
+ExecStart=/usr/bin/feh --bg-center --no-fehbg /home/ip/.config/wallpaper
 
 [Install]
 WantedBy=wm.target
