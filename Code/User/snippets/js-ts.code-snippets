@@ -1,0 +1,142 @@
+{
+  // Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"scope": "javascript,typescript,typescriptreact",
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  
+  
+  "const": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "c",
+    "body": "const$0",
+    "description": "insert const"
+  },
+  "function": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "f",
+    "body": "function$0",
+    "description": "insert function"
+  },
+  "return": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "r",
+    "body": "return$0",
+    "description": "insert return"
+  },
+  "export default": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "ed",
+    "body": "export default$0",
+    "description": "insert export default"
+  },
+  "console.log": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "cl",
+    "body": "console.log(`$0`)",
+    "description": "insert console.log"
+  },
+  "export braces": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "b",
+    "body": "($1) {\n  $0\n}",
+    "description": "insert paren-braces"
+  },
+  "export function handler": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "e",
+    "body": "export async function $1($2) {\n  $0\n}",
+    "description": "Basic default async handler"
+  },
+  "import es5": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "imp",
+    "body": "import {$0} from '$1'",
+    "description": "import stuff"
+  },
+
+  "console.log a variable": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "cv",
+    // "body": "console.log('${1:${TM_SELECTED_TEXT}}:', ${1:${TM_Sexport default $0ELECTED_TEXT}})${0}",
+    "body": "console.log('$1', ${0})",
+    "description": "Variable console.log"
+  },
+  "val.console": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "val",
+    "body": "val => console.log('$0', val)",
+    "description": "console log arrow"
+  },
+  "arrow.empty": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "ar",
+    "body": "() => $0",
+    "description": "empty arrow"
+  },
+  "arrow.single": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "arr",
+    "body": "($1) => $0",
+    "description": "sinlge arg arrow"
+  },
+  "comment.major": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "//>",
+    "body": "//  ============${1/./=/g}============\n//              ${1/(.*)/${1:/upcase}/}            \n//  ============${1/./=/g}============\n${0}",
+    "description": "Major comment bock"
+  },
+  // this text was used to wrao around existing text: ${1:${TM_SELECTED_TEXT}}
+  "comment.minor": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "//?",
+    "body": "//  ==========  ${1/(.*)/${1:/upcase}/}  ==========\n${0}",
+    "description": "Minor comment block"
+  },
+  "comment.snippets": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "///",
+    "body": "////////////// ${1/(.*)/${1:/upcase}/}$0",
+    "description": "Comment block for snippets"
+  },
+  "then.assign": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "val=",
+    "body": "val => $0 = val",
+    "description": "Then Assign"
+  },
+  "db.template": {
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "dbs",
+    "body": [
+      "async function dbStuff() {",
+      "    let client: mysql.Connection",
+      "    let queryResults: RowDataPacket[]",
+      "",
+      "    const args: number[] = [ 1, 2, 3 ]",
+      "    const query: string = 'SELECT ?'",
+      "",
+      "    try {",
+      "        client = await mysql.createConnection(mysqlConfig);",
+      "        [ queryResults ] = await client.query<RowDataPacket[]>(query, args)",
+      "    }",
+      "    catch (err) { console.error(err) }",
+      "    finally { client.end() }",
+      "",
+      "    return queryResults",
+      "}"
+    ],
+    "description": "Promise Then (pt)"
+  }
+}

@@ -8,10 +8,12 @@
 
 	// general settings
 	"hot_exit": false,
-	"ignored_packages": ["Vintage" ],
+	"ignored_packages": ["Vintage"],
 	"gtk_client_side_window_decorations": false,
     "auto_complete": false,
     "auto_complete_commit_on_tab": false,
     "auto_close_tags":false,
     "auto_match_enabled": false,
+    "reveal_menu": false,
+
 }

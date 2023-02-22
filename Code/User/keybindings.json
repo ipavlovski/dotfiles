@@ -11,11 +11,33 @@
     "command": "-editor.action.insertLineAfter",
     "when": "editorTextFocus && !editorReadonly"
   },
+
   {
     "key": "ctrl+enter",
-    "command": "workbench.action.terminal.runSelectedText",
-    "when": "editorTextFocus && terminalIsOpen && !editorHasSelection"
+    "command": "workbench.action.terminal.sendSequence",
+    "args": { 
+      "text": ".editor\n${selectedText}\n\u0004"
+    },
+    "when": "editorTextFocus && terminalIsOpen && editorHasSelection && resourceExtname == .ts",
   },
+  // waitinf for a fix
+  // {
+  //   "key": "ctrl+enter",
+  //   "command": "workbench.action.terminal.runSelectedText",
+  //   "when": "editorTextFocus && terminalIsOpen && !editorHasSelection"
+  // },
+
+  {
+    "key": "ctrl+enter",
+    "command": "extension.multiCommand.execute",
+    "args": {
+      "sequence": [
+        "workbench.action.terminal.runSelectedText",
+        "workbench.action.focusActiveEditorGroup", // shift focus back to editor
+      ]
+    },
+    "when": "editorTextFocus&& terminalIsOpen && !editorHasSelection "  
+},
   {
     "key": "ctrl+enter",
     "command": "python.execSelectionInTerminal",
@@ -26,14 +48,14 @@
     "command": "workbench.action.terminal.runSelectedText",
     "when": "editorTextFocus && terminalIsOpen && editorHasSelection && resourceExtname == .sh"
   },
-  {
-    "key": "ctrl+enter",
-    "command": "extension.multiCommand.execute",
-    "args": {
-      "command": "multiCommand.tsSendRegion"
-    },
-    "when": "editorTextFocus && terminalIsOpen && editorHasSelection && resourceExtname == .ts"
-  },
+  // {
+  //   "key": "ctrl+enter",
+  //   "command": "extension.multiCommand.execute",
+  //   "args": {
+  //     "command": "multiCommand.tsSendRegion"
+  //   },
+  //   "when": "editorTextFocus && terminalIsOpen && editorHasSelection && resourceExtname == .ts"
+  // },
   // {
   //   "key": "ctrl+enter",
   //   "command": "extension.multiCommand.execute",
